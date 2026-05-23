@@ -16,15 +16,17 @@
     <hr>
     <h4>LISTA DE PERSONAS</h4>
     <hr>
-    <div th:if="${usuarios !=null and !usuarios.empty}">
+    <div th:if="${users !=null and !users.empty}">
         <table border="1">
             <tr>
+                <th>ID</th>
                 <th>CEDULA</th>
                 <th>CLAVE</th>
                 <th>NOMBRE</th>
                 <th>EMAIL</th>
             </tr>
-            <tr th:each="u : ${usuarios}">
+            <tr th:each="u : ${users}">
+                <td th:text="${u.id}"></td>
                 <td th:text="${u.cedula}"></td>
                 <td th:text="${u.clave}"></td>
                 <td th:text="${u.nombre}"></td>
@@ -32,7 +34,7 @@
             </tr>
         </table>
     </div>
-    <div th:if="${usuarios ==null or usuarios.empty}">
+    <div th:if="${users ==null or users.empty}">
         La lista de Usuarios esta vacia
     </div>
 </body>

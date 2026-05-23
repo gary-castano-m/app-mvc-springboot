@@ -1,6 +1,8 @@
-package com.asignatura.app;
+package com.asignatura.app.controladores;
 
+import com.asignatura.app.dao.IUsuarioCrud;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,8 @@ import java.util.List;
 @Controller
 @Slf4j
 public class ControladorInicio {
+    @Autowired
+    IUsuarioCrud usuarioCrud;
     @Value ("${index.mensaje}")
     String dato;
     @GetMapping("/")
@@ -36,8 +40,8 @@ public class ControladorInicio {
         u3.setClave("Jack");
         u3.setNombre("JACKELIN MOLINA BELTRAN");
         u3.setEmail("jamobe27@hotmail.com");
-        List<Usuario> listaUsuarios = Arrays.asList(u2, u3);
-        modelo.addAttribute ("usuarios", listaUsuarios);
+        List<Usuario> listaUsuarios = (List<Usuario>) usuarioCrud.findAll();
+        modelo.addAttribute ("users", listaUsuarios);
         log.info("Ejecutando el contralodor Inicio");
         return "index";
     }
