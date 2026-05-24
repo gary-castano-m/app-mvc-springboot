@@ -1,6 +1,7 @@
 package com.asignatura.app.controladores;
 
 import com.asignatura.app.dao.IUsuarioCrud;
+import com.asignatura.app.servicio.UsuarioServicioImp;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -16,31 +17,11 @@ import java.util.List;
 @Slf4j
 public class ControladorInicio {
     @Autowired
-    IUsuarioCrud usuarioCrud;
-    @Value ("${index.mensaje}")
-    String dato;
+    UsuarioServicioImp userServicio;
+
     @GetMapping("/")
     public String inicio(Model modelo) {
-        String mensaje = "Saludos desde Spring MVC";
-        modelo.addAttribute ("mensaje", mensaje);
-        modelo.addAttribute ("dato", dato);
-        Usuario u1 = new Usuario ();
-        u1.setCedula("123456789");
-        u1.setClave("Abcd");
-        u1.setNombre("GARY JOSE CASTAÑO MOLINA");
-        u1.setEmail("gcastanom@unicartagena.edu.co");
-        modelo.addAttribute ("alguien", u1);
-        Usuario u2 = new Usuario ();
-        u2.setCedula("45549964");
-        u2.setClave("Vaya");
-        u2.setNombre("YURIS MARCELA TOVAR DEL CASTILLO");
-        u2.setEmail("cami041002@hotmail.com");
-        Usuario u3 = new Usuario ();
-        u3.setCedula("45471861");
-        u3.setClave("Jack");
-        u3.setNombre("JACKELIN MOLINA BELTRAN");
-        u3.setEmail("jamobe27@hotmail.com");
-        List<Usuario> listaUsuarios = (List<Usuario>) usuarioCrud.findAll();
+        List<Usuario> listaUsuarios = (List<Usuario>) userServicio.listarUsuarios();
         modelo.addAttribute ("users", listaUsuarios);
         log.info("Ejecutando el contralodor Inicio");
         return "index";
