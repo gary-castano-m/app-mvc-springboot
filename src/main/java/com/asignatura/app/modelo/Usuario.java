@@ -1,12 +1,13 @@
 package com.asignatura.app.modelo;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
+
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
+import java.sql.Timestamp;
+import java.time.Instant;
 
 @Entity
 @Table(name = "users")
@@ -23,4 +24,31 @@ public class Usuario implements Serializable {
     @Column(name = "name")
     private  String nombre;
     private String email;
+    private String role;
+    private String status;
+
+    @Column(name = "created_at", nullable = true, updatable = false)
+    Timestamp created_at;
+
+    @Column(name = "updated_at", nullable = true, updatable = true)
+    Timestamp updated_at;
+
+    @PrePersist
+    public void prePersist() {
+        Timestamp now = Timestamp.from(Instant.now());
+
+        if (created_at == null) {
+            created_at = now;
+        }
+
+        if (updated_at == null) {
+            updated_at = now;
+        }
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+        updated_at = Timestamp.from(Instant.now());
+    }
+
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 @Slf4j
@@ -36,8 +37,19 @@ public class ControladorInicio {
 
     @PostMapping("/guardar")
     public String guardar(Usuario usuario){
+        if (usuario.getId() == null || usuario.getId().isEmpty()){
+            usuario.setId(UUID.randomUUID().toString());
+        }
         userServicio.guardarUsuario(usuario);
         return "redirect:/";
+    }
+
+    @GetMapping("editar/{id}")
+    public String editar(Usuario usuario, Model modelo){
+        log.info("Invocando el metodo EDITAR ");
+        usuario = userServicio.buscar(usuario);
+        modelo.addAttribute("usuario", usuario);
+        return "modificar";
     }
 
 }

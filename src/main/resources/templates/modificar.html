@@ -10,18 +10,25 @@
         <a th:href="@{/}">REGRESAR</a>
         <br/>
         <form th:action="@{/guardar}" method="POST" th:object="${usuario}">
+            <input type="hidden" th:field="*{id}">
             <br/>
             <label for="cedula">CEDULA:</label>
-            <input id="text" name="cedula" th:field="*{cedula}" required />
+            <input id="cedula" name="cedula" th:field="*{cedula}" required />
             <br/>
             <label for="clave">CLAVE:</label>
-            <input id="password" name="clave" th:field="*{clave}" />
+            <input id="clave" name="clave" type="password" required placeholder="********" />
             <br/>
             <label for="nombre">NOMBRE:</label>
-            <input id="text" name="nombre" th:field="*{nombre}" required />
+            <input id="nombre" name="nombre" th:field="*{nombre}" required />
             <br/>
             <label for="email">EMAIL:</label>
-            <input id="email" name="email" th:field="*{email}" />
+            <input id="email" type="email" name="email" th:field="*{email}" />
+            <br/>
+            <label for="role">ROL:</label>
+            <input id="role" name="role" th:field="*{role}" />
+            <br/>
+            <label for="status">STATUS:</label>
+            <input id="status" type="status" name="status" th:field="*{status}" />
             <br/>
             <input type="reset" value="LIMPIAR" /> &nbsp;&nbsp;&nbsp;
             <input type="submit" name="guardar" value="GUARDAR"/>
