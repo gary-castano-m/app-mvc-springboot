@@ -14,21 +14,27 @@
             <br/>
             <label for="cedula">CEDULA:</label>
             <input id="cedula" name="cedula" th:field="*{cedula}" required />
+            <span th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}">La cedula es requerida</span>
             <br/>
             <label for="clave">CLAVE:</label>
             <input id="clave" name="clave" type="password" required placeholder="********" />
+            <span th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}">La clave es requerida</span>
             <br/>
             <label for="nombre">NOMBRE:</label>
             <input id="nombre" name="nombre" th:field="*{nombre}" required />
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">El nombre es requerido</span>
             <br/>
             <label for="email">EMAIL:</label>
             <input id="email" type="email" name="email" th:field="*{email}" />
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">El email es requerido</span>
             <br/>
             <label for="role">ROL:</label>
             <input id="role" name="role" th:field="*{role}" />
+            <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}">El role es requerido</span>
             <br/>
             <label for="status">STATUS:</label>
             <input id="status" type="status" name="status" th:field="*{status}" />
+            <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}">El status es requerido</span>
             <br/>
             <input type="reset" value="LIMPIAR" /> &nbsp;&nbsp;&nbsp;
             <input type="submit" name="guardar" value="GUARDAR"/>

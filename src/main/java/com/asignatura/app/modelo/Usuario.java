@@ -13,18 +13,25 @@ import java.time.Instant;
 @Table(name = "users")
 @Data
 public class Usuario implements Serializable {
+    //PROPIEDADES
     private static final long serialVersionUID = 1L;
     @Id
+    @Basic(optional = false)
+    @Column(name = "id", nullable = false, length = 15)
     private String id;
-    //  PROPIEDADES
-
+    @NotEmpty
     private String cedula;
     @Column(name = "password")
+    @NotEmpty
     private  String clave;
     @Column(name = "name")
+    @NotEmpty
     private  String nombre;
+    @NotEmpty
     private String email;
+    @NotEmpty
     private String role;
+    @NotEmpty
     private String status;
 
     @Column(name = "created_at", nullable = true, updatable = false)
