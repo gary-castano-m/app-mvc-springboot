@@ -11,9 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import com.asignatura.app.modelo.Usuario;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,8 +56,8 @@ public class ControladorInicio {
         return "modificar";
     }
 
-    @GetMapping("eliminar/{id}")
-    public String eliminar(Usuario usuario) {
+    @GetMapping("/eliminar")
+    public String eliminar(Usuario usuario){
         userServicio.eliminar(usuario);
         return "redirect:/";
     }

@@ -3,6 +3,7 @@ package com.asignatura.app.modelo;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
@@ -14,7 +15,6 @@ import java.time.Instant;
 @Data
 public class Usuario implements Serializable {
     //PROPIEDADES
-    private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @Column(name = "id", nullable = false, length = 15)
@@ -57,5 +57,4 @@ public class Usuario implements Serializable {
     public void preUpdate() {
         updated_at = Timestamp.from(Instant.now());
     }
-
 }

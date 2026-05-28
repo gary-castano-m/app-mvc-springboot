@@ -1,17 +1,16 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-        xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" >
 <head>
-    <title>EJEMPLO DE APP WEB MVC CON SPRING BOOT</title>
-    <meta charset="UTF-8">
+    <title th:text="#{plantilla.titulo}"></title>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 </head>
 <body>
     <header th:fragment="cabecero">
-        <h1>APP WEB MVC CON SPRING BOOT</h1>
+        <h1 th:text="#{plantilla.titulo}"></h1>
     </header>
 
     <footer th:fragment="pie">
-        <span>By: Gary José Castaño Molina</span>
+        <span th:text="#{plantilla.pie}">El pie</span>
         <p><a href="https://www.youtube.com/@GARYJOSECASTA%C3%91OMOLINA">
                 Canal de Youtube
             </a>

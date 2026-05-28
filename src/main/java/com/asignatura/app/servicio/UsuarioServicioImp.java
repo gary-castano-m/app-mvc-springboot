@@ -23,11 +23,13 @@ public class UsuarioServicioImp implements IUsuarioServicio{
         crudUser.save(user);
     }
 
+    @Transactional
     @Override
     public void eliminar(Usuario user) {
-
+        crudUser.delete(user);
     }
 
+    @Transactional
     @Override
     public Usuario buscar(Usuario user) {
         return crudUser.findById(user.getId()).orElse(null);
