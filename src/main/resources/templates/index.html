@@ -27,7 +27,7 @@
                 <td th:text="${u.clave}"></td>
                 <td th:text="${u.nombre}"></td>
                 <td th:text="${u.email}"></td>
-                <td><a th:href="@{/editar/}+${u.id}" th:text="EDITAR" ></a></td>
+                <td><a th:href="@{/editar/{id}(id=${u.id})}">EDITAR</a></td>
                 <td><a th:href="@{/eliminar(id=${u.id})}" th:text="ELIMINAR" ></a></td>
             </tr>
         </table>
