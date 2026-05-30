@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>CRUD MVC ASIGNATURAS CON SPRING BOOT</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header th:replace="~{plantillas/partes :: cabecero}"></header>
+<h2>LISTADO DE ASIGNATURAS</h2>
+<a th:href="@{/}">REGRESAR A USUARIOS</a>
+<br/>
+<a th:href="@{/asignaturas/agregar}">AGREGAR ASIGNATURA</a>
+<h4>LISTA DE ASIGNATURAS</h4>
+<hr>
+<div th:if="${asignaturas !=null and !asignaturas.empty}">
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>NOMBRE COMPLETO</th>
+            <th>CARRERA</th>
+            <th>CREDITOS</th>
+            <th>SEMESTRE</th>
+            <th>PROFESOR</th>
+            <th>EDITAR</th>
+            <th>ELIMINAR</th>
+        </tr>
+        <tr th:each="a : ${asignaturas}">
+            <td th:text="${a.id}"></td>
+            <td th:text="${a.nombre}"></td>
+            <td th:text="${a.nombreCompleto}"></td>
+            <td th:text="${a.carrera}"></td>
+            <td th:text="${a.numeroCreditos}"></td>
+            <td th:text="${a.semestre}"></td>
+            <td th:text="${a.profesor}"></td>
+            <td><a th:href="@{/asignaturas/editar/{id}(id=${a.id})}">EDITAR</a></td>
+            <td><a th:href="@{/asignaturas/eliminar(id=${a.id})}" th:text="ELIMINAR"></a></td>
+        </tr>
+    </table>
+</div>
+<div th:if="${asignaturas ==null or #lists.isEmpty(asignaturas)}">
+    La lista de Asignaturas esta vacia
+</div><br/><hr>
+<footer th:replace="~{plantillas/partes :: pie}"></footer>
+</body>
+</html>
