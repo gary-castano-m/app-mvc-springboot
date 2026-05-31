@@ -1,5 +1,41 @@
+# App MVC Spring Boot - CRUD Usuarios y Asignaturas
 
-Las Guias de II Corte
-https://drive.google.com/drive/folders/1uaxWx3Vyvz9-imMHR1VfqU31vEYc8KrC?usp=drive_link
-Igual a la metodologia anterior de 1 corte.
-Cada uno tiene dos tablas (usuarios y tabla x) en estas guias les hago el CRUD de la tabla usuarios usando Spring MVC ustedes tienen que replicarla y hacer el crud de su respectiva tabla X
+Aplicación web desarrollada con Spring Boot MVC, Thymeleaf, Spring Data JPA y MySQL.  
+El proyecto implementa operaciones CRUD para dos entidades principales:
+
+- Usuarios
+- Asignaturas
+
+La estructura del proyecto sigue una arquitectura MVC sencilla, separando responsabilidades en modelo, DAO, servicio, controlador y vistas.
+
+## Tecnologías utilizadas
+
+- Java 21
+- Spring Boot 4.0.6
+- Spring Web MVC
+- Spring Data JPA
+- Thymeleaf
+- MySQL
+- Lombok
+- Spring Security
+- Maven Wrapper
+
+## Estructura general del proyecto
+
+```txt
+src/main/java/com/asignatura/app/
+├── controladores/
+│   ├── ControladorInicio.java
+│   └── ControladorAsignatura.java
+├── dao/
+│   ├── IUsuarioCrud.java
+│   └── IAsignaturaCrud.java
+├── modelo/
+│   ├── Usuario.java
+│   └── Asignatura.java
+├── servicio/
+│   ├── IUsuarioServicio.java
+│   ├── UsuarioServicioImp.java
+│   ├── IAsignaturaServicio.java
+│   └── AsignaturaServicioImp.java
+└── AppApplication.java
