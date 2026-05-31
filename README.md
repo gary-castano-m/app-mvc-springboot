@@ -416,4 +416,8 @@ templates/
 
 ## Autor
 
-Proyecto academico desarrollado como practica de Spring Boot MVC, implementando CRUD para usuarios y asignaturas.
+<p align="center">
+  <img src="img/logo.png" width="250">
+</p>
+
+Desarrollado por Gary José Castaño Molina.
