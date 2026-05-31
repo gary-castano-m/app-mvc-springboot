@@ -4,52 +4,78 @@
 <head>
     <title>DATOS DE LA ASIGNATURA</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
-<body>
-<h1>[[#{asignatura.formulario}]]</h1>
-<a th:href="@{/asignaturas}">[[#{accion.regresar}]]</a>
-<br/>
-<form th:action="@{/asignaturas/guardar}" method="POST" th:object="${asignatura}">
-    <input type="hidden" th:field="*{id}">
+<body class="page-subject-form">
+<header th:replace="~{plantillas/partes :: cabecero}"></header>
 
-    <label for="nombre" th:text="#{asignatura.nombre}"></label>
-    <input id="nombre" name="nombre" th:field="*{nombre}" required />
-    <br/>
+<main class="form-page">
+    <section class="page-box">
+        <div class="page-header">
+            <div>
+                <h1>[[#{asignatura.formulario}]]</h1>
+                <p>Completa la informacion de la asignatura</p>
+            </div>
 
-    <label for="nombreCompleto" th:text="#{asignatura.nombreCompleto}"></label>
-    <input id="nombreCompleto" name="nombreCompleto" th:field="*{nombreCompleto}" required />
-    <br/>
+            <a class="button secondary" th:href="@{/asignaturas}">[[#{accion.regresar}]]</a>
+        </div>
 
-    <label for="descripcion" th:text="#{asignatura.descripcion}"></label>
-    <textarea id="descripcion" name="descripcion" th:field="*{descripcion}"></textarea>
-    <br/>
+        <form class="form-grid" th:action="@{/asignaturas/guardar}" method="POST" th:object="${asignatura}">
+            <input type="hidden" th:field="*{id}">
 
-    <label for="areaConocimiento" th:text="#{asignatura.areaConocimiento}"></label>
-    <input id="areaConocimiento" name="areaConocimiento" th:field="*{areaConocimiento}" />
-    <br/>
+            <div class="field">
+                <label for="nombre" th:text="#{asignatura.nombre}"></label>
+                <input id="nombre" name="nombre" th:field="*{nombre}" required />
+            </div>
 
-    <label for="carrera" th:text="#{asignatura.carrera}"></label>
-    <input id="carrera" name="carrera" th:field="*{carrera}" />
-    <br/>
+            <div class="field">
+                <label for="nombreCompleto" th:text="#{asignatura.nombreCompleto}"></label>
+                <input id="nombreCompleto" name="nombreCompleto" th:field="*{nombreCompleto}" required />
+            </div>
 
-    <label for="numeroCreditos" th:text="#{asignatura.numeroCreditos}"></label>
-    <input id="numeroCreditos" type="number" name="numeroCreditos" th:field="*{numeroCreditos}" required />
-    <br/>
+            <div class="field">
+                <label for="descripcion" th:text="#{asignatura.descripcion}"></label>
+                <textarea id="descripcion" name="descripcion" th:field="*{descripcion}"></textarea>
+            </div>
 
-    <label for="contenidoTematico" th:text="#{asignatura.contenidoTematico}"></label>
-    <textarea id="contenidoTematico" name="contenidoTematico" th:field="*{contenidoTematico}"></textarea>
-    <br/>
+            <div class="field">
+                <label for="areaConocimiento" th:text="#{asignatura.areaConocimiento}"></label>
+                <input id="areaConocimiento" name="areaConocimiento" th:field="*{areaConocimiento}" />
+            </div>
 
-    <label for="semestre" th:text="#{asignatura.semestre}"></label>
-    <input id="semestre" type="number" name="semestre" th:field="*{semestre}" />
-    <br/>
+            <div class="field">
+                <label for="carrera" th:text="#{asignatura.carrera}"></label>
+                <input id="carrera" name="carrera" th:field="*{carrera}" />
+            </div>
 
-    <label for="profesor" th:text="#{asignatura.profesor}"></label>
-    <input id="profesor" name="profesor" th:field="*{profesor}" />
-    <br/>
+            <div class="field">
+                <label for="numeroCreditos" th:text="#{asignatura.numeroCreditos}"></label>
+                <input id="numeroCreditos" type="number" name="numeroCreditos" th:field="*{numeroCreditos}" required />
+            </div>
 
-    <input type="reset" th:value="#{accion.regresar}"/> &nbsp;&nbsp;&nbsp;
-    <input type="submit" name="guardar" th:value="#{accion.guardar}">
-</form>
+            <div class="field">
+                <label for="contenidoTematico" th:text="#{asignatura.contenidoTematico}"></label>
+                <textarea id="contenidoTematico" name="contenidoTematico" th:field="*{contenidoTematico}"></textarea>
+            </div>
+
+            <div class="field">
+                <label for="semestre" th:text="#{asignatura.semestre}"></label>
+                <input id="semestre" type="number" name="semestre" th:field="*{semestre}" />
+            </div>
+
+            <div class="field">
+                <label for="profesor" th:text="#{asignatura.profesor}"></label>
+                <input id="profesor" name="profesor" th:field="*{profesor}" />
+            </div>
+
+            <div class="form-actions">
+                <input type="reset" th:value="#{accion.regresar}"/>
+                <input type="submit" name="guardar" th:value="#{accion.guardar}">
+            </div>
+        </form>
+    </section>
+</main>
+
+<footer th:replace="~{plantillas/partes :: pie}"></footer>
 </body>
 </html>

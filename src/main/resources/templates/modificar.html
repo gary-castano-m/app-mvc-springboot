@@ -1,44 +1,84 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org"
       xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>DATOS DEL USUARIO</title>
-        <meta charset="UTF-8">
-    </head>
-    <body>
-        <h1>[[#{usuario.formulario}]]</h1>
-        <a th:href="@{/}">[[#{accion.regresar}]]</a>
-        <br/>
-        <form th:action="@{/guardar}" method="POST" th:object="${usuario}">
+<head>
+    <title>DATOS DEL USUARIO</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body class="page-user-form">
+<header th:replace="~{plantillas/partes :: cabecero}"></header>
+
+<main class="form-page">
+    <section class="page-box">
+        <div class="page-header">
+            <div>
+                <h1>[[#{usuario.formulario}]]</h1>
+                <p>Completa la informacion del usuario</p>
+            </div>
+
+            <a class="button secondary" th:href="@{/}">[[#{accion.regresar}]]</a>
+        </div>
+
+        <form class="form-grid" th:action="@{/guardar}" method="POST" th:object="${usuario}">
             <input type="hidden" th:field="*{id}">
-            <br/>
-            <label for="cedula" th:text="#{usuario.cedula}"></label>
-            <input id="cedula" name="cedula" th:field="*{cedula}" required />
-            <span th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"> La cedula es requerida</span>
-            <br/>
-            <label for="clave" th:text="#{usuario.clave}"></label>
-            <input id="clave" name="clave" type="password" required placeholder="********" />
-            <span th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}">La clave es requerida</span>
-            <br/>
-            <label for="nombre" th:text="#{usuario.nombre}"></label>
-            <input id="nombre" name="nombre" th:field="*{nombre}" required />
-            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">El nombre es requerido</span>
-            <br/>
-            <label for="email" ></label>
-            <input id="email" type="email" name="email" th:field="*{email}" />
-            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">El email es requerido</span>
-            <br/>
-            <label for="role">ROL:</label>
-            <input id="role" name="role" th:field="*{role}" />
-            <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}">El role es requerido</span>
-            <br/>
-            <label for="status">STATUS:</label>
-            <input id="status" type="status" name="status" th:field="*{status}" />
-            <span th:if="${#fields.hasErrors('status')}" th:errors="*{status}">El status es requerido</span>
-            <br/>
-            <input type="reset" th:value="#{accion.regresar}"/> &nbsp;&nbsp;&nbsp;
-            <input type="submit" name="guardar" th:value="#{accion.agregar}">
-            <br/>
+
+            <div class="field">
+                <label for="cedula" th:text="#{usuario.cedula}"></label>
+                <input id="cedula" name="cedula" th:field="*{cedula}" required />
+                <span class="error" th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}">
+                        La cedula es requerida
+                    </span>
+            </div>
+
+            <div class="field">
+                <label for="clave" th:text="#{usuario.clave}"></label>
+                <input id="clave" name="clave" type="password" required placeholder="********" />
+                <span class="error" th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}">
+                        La clave es requerida
+                    </span>
+            </div>
+
+            <div class="field">
+                <label for="nombre" th:text="#{usuario.nombre}"></label>
+                <input id="nombre" name="nombre" th:field="*{nombre}" required />
+                <span class="error" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">
+                        El nombre es requerido
+                    </span>
+            </div>
+
+            <div class="field">
+                <label for="email">EMAIL:</label>
+                <input id="email" type="email" name="email" th:field="*{email}" />
+                <span class="error" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">
+                        El email es requerido
+                    </span>
+            </div>
+
+            <div class="field">
+                <label for="role">ROL:</label>
+                <input id="role" name="role" th:field="*{role}" />
+                <span class="error" th:if="${#fields.hasErrors('role')}" th:errors="*{role}">
+                        El role es requerido
+                    </span>
+            </div>
+
+            <div class="field">
+                <label for="status">STATUS:</label>
+                <input id="status" name="status" th:field="*{status}" />
+                <span class="error" th:if="${#fields.hasErrors('status')}" th:errors="*{status}">
+                        El status es requerido
+                    </span>
+            </div>
+
+            <div class="form-actions">
+                <input type="reset" th:value="#{accion.regresar}"/>
+                <input type="submit" name="guardar" th:value="#{accion.agregar}">
+            </div>
         </form>
-    </body>
+    </section>
+</main>
+
+<footer th:replace="~{plantillas/partes :: pie}"></footer>
+</body>
 </html>

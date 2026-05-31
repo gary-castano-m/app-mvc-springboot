@@ -3,18 +3,20 @@
 <head>
     <title th:text="#{plantilla.titulo}"></title>
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
 <body>
-    <header th:fragment="cabecero">
-        <h1 th:text="#{plantilla.titulo}"></h1>
-    </header>
+<header class="site-header" th:fragment="cabecero">
+    <h1 th:text="#{plantilla.titulo}"></h1>
+</header>
 
-    <footer th:fragment="pie">
-        <span th:text="#{plantilla.pie}">El pie</span>
-        <p><a href="https://www.youtube.com/@GARYJOSECASTA%C3%91OMOLINA">
-                Canal de Youtube
-            </a>
-        </p>
-    </footer>
+<footer class="site-footer" th:fragment="pie">
+    <span th:text="#{plantilla.pie}">El pie</span>
+    <p>
+        <a href="https://www.youtube.com/@GARYJOSECASTA%C3%91OMOLINA">
+            Canal de Youtube
+        </a>
+    </p>
+</footer>
 </body>
 </html>

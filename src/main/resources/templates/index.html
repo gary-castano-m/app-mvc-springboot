@@ -3,40 +3,62 @@
 <head>
     <title>EJEMPLO DE CRUD MVC CON SPRING BOOT</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
 </head>
-<body>
+<body class="page-users">
 <header th:replace="~{plantillas/partes :: cabecero}"></header>
-<h2>PAGINA DE INICIO</h2>
-<a th:href="@{/agregar}">AGREGAR USUARIO</a>
-<br/>
-<a th:href="@{/asignaturas}">VER ASIGNATURAS</a>
-<h4>LISTA DE PERSONAS</h4>
-<hr>
-<div th:if="${users !=null and !users.empty}">
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>CEDULA</th>
-            <th>CLAVE</th>
-            <th>NOMBRE</th>
-            <th>EMAIL</th>
-            <th>EDITAR</th>
-            <th>ELIMINAR</th>
-        </tr>
-        <tr th:each="u : ${users}">
-            <td th:text="${u.id}"></td>
-            <td th:text="${u.cedula}"></td>
-            <td th:text="${u.clave}"></td>
-            <td th:text="${u.nombre}"></td>
-            <td th:text="${u.email}"></td>
-            <td><a th:href="@{/editar/{id}(id=${u.id})}">EDITAR</a></td>
-            <td><a th:href="@{/eliminar(id=${u.id})}" th:text="ELIMINAR" ></a></td>
-        </tr>
-    </table>
-</div>
-<div th:if="${users ==null or #lists.isEmpty(users)}">
-    La lista de Usuarios esta vacia
-</div><br/><hr>
+
+<main class="page">
+    <section class="page-box">
+        <div class="page-header">
+            <div>
+                <h2>PAGINA DE INICIO</h2>
+                <p>Gestion de usuarios registrados en el sistema</p>
+            </div>
+
+            <div class="actions">
+                <a class="button" th:href="@{/agregar}">AGREGAR USUARIO</a>
+                <a class="button secondary" th:href="@{/asignaturas}">VER ASIGNATURAS</a>
+            </div>
+        </div>
+
+        <div th:if="${users !=null and !users.empty}">
+            <div class="table-wrap">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>CEDULA</th>
+                        <th>CLAVE</th>
+                        <th>NOMBRE</th>
+                        <th>EMAIL</th>
+                        <th>EDITAR</th>
+                        <th>ELIMINAR</th>
+                    </tr>
+                    <tr th:each="u : ${users}">
+                        <td th:text="${u.id}"></td>
+                        <td th:text="${u.cedula}"></td>
+                        <td th:text="${u.clave}"></td>
+                        <td th:text="${u.nombre}"></td>
+                        <td th:text="${u.email}"></td>
+                        <td>
+                            <a class="button secondary" th:href="@{/editar/{id}(id=${u.id})}">
+                                EDITAR
+                            </a>
+                        </td>
+                        <td>
+                            <a class="button danger" th:href="@{/eliminar(id=${u.id})}" th:text="ELIMINAR"></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="empty-state" th:if="${users ==null or #lists.isEmpty(users)}">
+            La lista de Usuarios esta vacia
+        </div>
+    </section>
+</main>
+
 <footer th:replace="~{plantillas/partes :: pie}"></footer>
 </body>
 </html>
